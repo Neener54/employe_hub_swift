@@ -1,0 +1,153 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: employeeDashboard
+schemes:
+  - http
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/employees/{id}':
+    get:
+      tags:
+        - employee
+      summary: 'Find a model instance by {{id}}'
+      operationId: employee.findOne
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/employee'
+      deprecated: false
+    put:
+      tags:
+        - employee
+      summary: Put attributes for a model instance and persist it
+      operationId: employee.replace
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/employee'
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/employee'
+      deprecated: false
+    patch:
+      tags:
+        - employee
+      summary: Patch attributes for a model instance and persist it
+      operationId: employee.update
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/employee'
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/employee'
+      deprecated: false
+    delete:
+      tags:
+        - employee
+      summary: 'Delete a model instance by {{id}}'
+      operationId: employee.delete
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /employees:
+    post:
+      tags:
+        - employee
+      summary: Create a new instance of the model and persist it
+      operationId: employee.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/employee'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/employee'
+      deprecated: false
+    get:
+      tags:
+        - employee
+      summary: Find all instances of the model
+      operationId: employee.findAll
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/employee'
+      deprecated: false
+    delete:
+      tags:
+        - employee
+      summary: Delete all instances of the model
+      operationId: employee.deleteAll
+      responses:
+        '200':
+          description: Request was successful
+      deprecated: false
+definitions:
+  employee:
+    properties:
+      id:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+    additionalProperties: false
+    required:
+      - firstName
+      - lastName

@@ -1,0 +1,13 @@
+applications:
+- name: employeeDashboard
+  random-route: true
+  memory: 128M
+  instances: 1
+  disk_quota: 1024M
+  buildpack: swift_buildpack
+  command: employeeDashboard --bind 0.0.0.0:$PORT
+  env:
+    OPENAPI_SPEC: "/swagger/api"
+  services:
+  - crudDataStore
+  timeout: 180
